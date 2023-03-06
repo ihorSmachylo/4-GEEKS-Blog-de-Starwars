@@ -15,6 +15,14 @@ export const Home = () => (
         </div>
 
         <div className="card border-dark my-3 mx-2 text-bg-dark">
+          <img src="https://starwars-visualguide.com/assets/img/characters/13.jpg" className="card-img-top" alt="..."/>
+          <div className="card-body">
+            <p className="card-title">Chewbacca</p>
+          </div>
+        </div>
+
+
+        <div className="card border-dark my-3 mx-2 text-bg-dark">
           <img src="https://starwars-visualguide.com/assets/img/characters/2.jpg" className="card-img-top" alt="..."/>
           <div className="card-body">
             <p className="card-title">C-3PO</p>
@@ -34,14 +42,6 @@ export const Home = () => (
             <p className="card-title">Darth Vader</p>
           </div>
         </div>
-
-        <div className="card border-dark my-3 mx-2 text-bg-dark">
-          <img src="https://starwars-visualguide.com/assets/img/characters/5.jpg" className="card-img-top" alt="..."/>
-          <div className="card-body">
-            <p className="card-title">Leia Organa</p>
-          </div>
-        </div>
-
       </div>
     </div>
 	</div>
