@@ -1,16 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
-
-// Custom Componet que muestra las Cards de los planetas
 import { CardPlanets } from "../views/CardPlanets.jsx";
 
 
 export const Planets = () => {
 	const { store, actions } = useContext(Context);
-	// Traemos los planets del store
 	const planets = store.planets;
-    // const selectPlanet = store.selectPlanet;
 
 	return (
 		<div className="container bg-dark mb-3">

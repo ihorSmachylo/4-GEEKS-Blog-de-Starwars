@@ -2,11 +2,6 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { Context } from '../store/appContext';
 
-// people: https://starwars-visualguide.com/assets/img/characters/1.jpg
-// planets: https://starwars-visualguide.com/assets/img/planets/1.jpg
-// host = "https://starwars-visualguide.com/assets/img/"
-
-
 
 export const CardPlanets = ({ id, name, population, terrain, climate, orbiltal_period, rotation_period, diameter }) => {
     const { store, actions } = useContext(Context);
