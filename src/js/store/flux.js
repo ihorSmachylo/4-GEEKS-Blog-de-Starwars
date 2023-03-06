@@ -1,51 +1,30 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+			planets: [],
+            selectPlanet: [],
+			favorites: []
 		},
 		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
+
+            getPlanet: (planet) => { setStore({ selectPlanet: planet, }); },
 			getPlanets: async () => {
-				const url = "https://www.swapi.tech/api/planets/";
-				const request ={
-					methods: "GET",
-					ContentType : "aplication/json"
-				}
-				const response = await fetch( url, request) 
-				if (response.ok){
-					const responseJSON = await response.json();
-					console.log(responseJSON)
-				}else (console.log("error"));
-				
-			},
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
+                const store = getStore();
+                if (localStorage.getItem("planets") === null) {
+                    const response = await fetch(`https://swapi.dev/api/planets`, {
+                        method: "GET",
+                        ContentType: "application/json",
+                    });
+                    const responseJSON = await response.json();
 
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
+                    setStore({ planets: responseJSON.results, });
 
-				//reset the global store
-				setStore({ demo: demo });
-			}
+                    localStorage.setItem(`planets`, JSON.stringify(store.planets));
+                    let storage = localStorage.getItem("planets");
+                } else {
+                    setStore({ planets: JSON.parse(localStorage.getItem("planets")), });
+                }
+            },
 		}
 	};
 };
